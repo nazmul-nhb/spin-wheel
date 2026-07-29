@@ -1,6 +1,6 @@
 {
 	"name": "@spin-wheel/embed",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"type": "module",
 	"sideEffects": false,
 	"exports": {

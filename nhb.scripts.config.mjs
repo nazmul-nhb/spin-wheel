@@ -38,14 +38,10 @@ function findPackageJsonFiles() {
 
 /**
  * Synchronizes all workspace package versions with the root package version.
- *
- * @returns {void}
  */
 function syncPackageVersions() {
     /** @type {{ version: string }} */
-    const rootPackage = JSON.parse(readFileSync('package.json', 'utf8'));
-
-    const version = rootPackage.version;
+    const { version } = JSON.parse(readFileSync('package.json', 'utf8'));
 
     for (const file of findPackageJsonFiles()) {
         /** @type {{ version: string }} */
