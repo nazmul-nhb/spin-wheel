@@ -80,5 +80,11 @@ export interface SpinWheelGlobal {
 }
 
 // Re-export useful types for consumers
-export type { SpinResult, WheelSegment, WheelState } from '@spin-wheel/core';
+export type {
+    SpinResult,
+    WheelEngine,
+    WheelEngineConfig,
+    WheelSegment,
+    WheelState,
+} from '@spin-wheel/core';
 export type { SpinWheelWidget } from '@spin-wheel/widget';

@@ -1,31 +1,31 @@
 {
-    "name": "spin-wheel",
-    "version": "1.1.1",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "build": "pnpm -r build",
-        "build:embed": "pnpm --filter @spin-wheel/embed build",
-        "dev": "pnpm --filter demo dev",
-        "watch": "pnpm -r --parallel watch",
-        "dev:embed": "pnpm --filter @spin-wheel/embed dev",
-        "dev:examples": "pnpm --filter examples dev",
-        "dev:all": "pnpm -r --parallel dev",
-        "clean": "pnpm -r exec rm -rf dist",
-        "test": "pnpm --filter @spin-wheel/core test",
-        "lint": "biome check .",
-        "fix": "biome check --write .",
-        "format": "biome format --write .",
-        "update-deps": "pnpm update --latest -r",
-        "commit": "nhb-commit",
-        "count": "nhb-count",
-        "delete": "nhb-delete"
-    },
-    "devDependencies": {
-        "@biomejs/biome": "^2.5.6",
-        "@types/node": "^26.1.2",
-        "nhb-scripts": "^1.9.2",
-        "typescript": "^7.0.2"
-    },
-    "packageManager": "pnpm@11.18.0+sha512.33d83c77da82f49fba836925c6f1b841181ec3132b670639bd012f7075f5c7cf634c5f870147c19aae7478fac01df09d8892e880454896edd23ee9b33757563c"
+  "name": "spin-wheel",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:embed": "pnpm --filter @spin-wheel/embed build",
+    "dev": "pnpm --filter demo dev",
+    "watch": "pnpm -r --parallel watch",
+    "dev:embed": "pnpm --filter @spin-wheel/embed dev",
+    "dev:examples": "pnpm --filter examples dev",
+    "dev:all": "pnpm -r --parallel dev",
+    "clean": "pnpm -r exec rm -rf dist",
+    "test": "pnpm --filter @spin-wheel/core test",
+    "lint": "biome check .",
+    "fix": "biome check --write .",
+    "format": "biome format --write .",
+    "update-deps": "pnpm update --latest -r",
+    "commit": "nhb-commit",
+    "count": "nhb-count",
+    "delete": "nhb-delete"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.6",
+    "@types/node": "^26.1.2",
+    "nhb-scripts": "^1.9.2",
+    "typescript": "^7.0.2"
+  },
+  "packageManager": "pnpm@11.18.0+sha512.33d83c77da82f49fba836925c6f1b841181ec3132b670639bd012f7075f5c7cf634c5f870147c19aae7478fac01df09d8892e880454896edd23ee9b33757563c"
 }
