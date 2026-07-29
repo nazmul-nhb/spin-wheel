@@ -1,5 +1,6 @@
 {
-    "name": "spin-wheel-monorepo",
+    "name": "spin-wheel",
+    "version": "1.1.1",
     "private": true,
     "type": "module",
     "scripts": {
@@ -9,10 +10,11 @@
         "watch": "pnpm -r --parallel watch",
         "dev:embed": "pnpm --filter @spin-wheel/embed dev",
         "dev:examples": "pnpm --filter examples dev",
+        "dev:all": "pnpm -r --parallel dev",
         "clean": "pnpm -r exec rm -rf dist",
         "test": "pnpm --filter @spin-wheel/core test",
         "lint": "biome check .",
-        "lint:fix": "biome check --write .",
+        "fix": "biome check --write .",
         "format": "biome format --write .",
         "update-deps": "pnpm update --latest -r",
         "commit": "nhb-commit",
@@ -20,16 +22,10 @@
         "delete": "nhb-delete"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.4",
-        "@types/node": "^25.3.2",
+        "@biomejs/biome": "^2.5.6",
+        "@types/node": "^26.1.2",
         "nhb-scripts": "^1.9.2",
-        "typescript": "^5.9.3"
+        "typescript": "^7.0.2"
     },
-    "pnpm": {
-        "onlyBuiltDependencies": [
-            "esbuild"
-        ]
-    },
-    "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017",
-    "version": "1.1.1"
+    "packageManager": "pnpm@11.18.0+sha512.33d83c77da82f49fba836925c6f1b841181ec3132b670639bd012f7075f5c7cf634c5f870147c19aae7478fac01df09d8892e880454896edd23ee9b33757563c"
 }

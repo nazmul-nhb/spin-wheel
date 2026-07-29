@@ -2,3 +2,7 @@ packages:
   - packages/*
   - demo
   - examples
+allowBuilds:
+  esbuild: true
+
+minimumReleaseAge: 120

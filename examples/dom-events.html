@@ -1,36 +1,36 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Example 3 — DOM Events (Embed)</title>
-		<link rel="stylesheet" href="./src/styles.css" />
-	</head>
-	<body>
-		<a href="index.html" class="back">← All Examples</a>
-		<h1>3. DOM Events (<code>spinwheel:*</code>)</h1>
-		<p class="subtitle">
-			Auto-init widgets dispatch typed <code>CustomEvent</code>s that bubble up the DOM.
-			Uses <code>@spin-wheel/embed</code> event type augmentation — no type errors!
-		</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Example 3 — DOM Events (Embed)</title>
+        <link href="./src/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <a class="back" href="index.html">← All Examples</a>
+        <h1>3. DOM Events (<code>spinwheel:*</code>)</h1>
+        <p class="subtitle">
+            Auto-init widgets dispatch typed <code>CustomEvent</code>s that bubble up the DOM.
+            Uses <code>@spin-wheel/embed</code> event type augmentation — no type errors!
+        </p>
 
-		<div class="layout">
-			<div class="wheel-area">
-				<div id="wheel" class="wheel-mount"></div>
-			</div>
+        <div class="layout">
+            <div class="wheel-area">
+                <div class="wheel-mount" id="wheel"></div>
+            </div>
 
-			<div class="info-area">
-				<h2>spinwheel:ready</h2>
-				<div id="ready-log" class="log-box">Waiting…</div>
+            <div class="info-area">
+                <h2>spinwheel:ready</h2>
+                <div class="log-box" id="ready-log">Waiting…</div>
 
-				<h2>spinwheel:state</h2>
-				<div id="state-log" class="log-box">—</div>
+                <h2>spinwheel:state</h2>
+                <div class="log-box" id="state-log">—</div>
 
-				<h2>spinwheel:finish</h2>
-				<div id="finish-log" class="log-box">—</div>
+                <h2>spinwheel:finish</h2>
+                <div class="log-box" id="finish-log">—</div>
 
-				<h2>Source Code</h2>
-				<pre class="code-box"><code>// Import types for DOM event augmentation
+                <h2>Source Code</h2>
+                <pre class="code-box"><code>// Import types for DOM event augmentation
 import '@spin-wheel/embed';
 // or: import type {} from '@spin-wheel/embed';
 
@@ -51,9 +51,9 @@ document.addEventListener('spinwheel:ready', (e) => {
   const widget = e.detail.widget;
   widget.spin();
 });</code></pre>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<script type="module" src="./src/dom-events.ts"></script>
-	</body>
+        <script src="./src/dom-events.ts" type="module"></script>
+    </body>
 </html>

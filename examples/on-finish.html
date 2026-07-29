@@ -1,34 +1,36 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Example 2 — onFinish Callback</title>
-		<link rel="stylesheet" href="./src/styles.css" />
-	</head>
-	<body>
-		<a href="index.html" class="back">← All Examples</a>
-		<h1>2. <code>onFinish</code> Callback</h1>
-		<p class="subtitle">
-			Pass a callback in the widget config. It fires with the <code>SpinResult</code>
-			after each spin — handy for analytics, toasts, or decoupled logic.
-		</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Example 2 — onFinish Callback</title>
+        <link href="./src/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <a class="back" href="index.html">← All Examples</a>
+        <h1>2. <code>onFinish</code> Callback</h1>
+        <p class="subtitle">
+            Pass a callback in the widget config. It fires with the <code>SpinResult</code>
+            after each spin — handy for analytics, toasts, or decoupled logic.
+        </p>
 
-		<div class="layout">
-			<div class="wheel-area">
-				<div id="wheel" class="wheel-mount"></div>
-				<button id="btn" class="btn" type="button">Spin!</button>
-			</div>
+        <div class="layout">
+            <div class="wheel-area">
+                <div class="wheel-mount" id="wheel"></div>
+                <button class="btn" id="btn" type="button">Spin!</button>
+            </div>
 
-			<div class="info-area">
-				<h2>Callback Log</h2>
-				<div id="log" class="log-box">Waiting for spins…</div>
+            <div class="info-area">
+                <h2>Callback Log</h2>
+                <div class="log-box" id="log">Waiting for spins…</div>
 
-				<h2>State Changes</h2>
-				<div id="state-log" class="log-box">—</div>
+                <h2>State Changes</h2>
+                <div class="log-box" id="state-log">—</div>
 
-				<h2>Source Code</h2>
-				<pre class="code-box"><code>import { SpinWheelWidget } from '@spin-wheel/widget';
+                <h2>Source Code</h2>
+                <pre
+                    class="code-box"
+                ><code>import { SpinWheelWidget } from '@spin-wheel/widget';
 
 const widget = SpinWheelWidget.create('#wheel', {
   segments,
@@ -47,9 +49,9 @@ const widget = SpinWheelWidget.create('#wheel', {
 
 // Just trigger the spin — no need to await for the result
 widget.spin();</code></pre>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<script type="module" src="./src/on-finish.ts"></script>
-	</body>
+        <script src="./src/on-finish.ts" type="module"></script>
+    </body>
 </html>

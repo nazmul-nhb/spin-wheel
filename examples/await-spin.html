@@ -1,31 +1,34 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Example 1 — await widget.spin()</title>
-		<link rel="stylesheet" href="./src/styles.css" />
-	</head>
-	<body>
-		<a href="index.html" class="back">← All Examples</a>
-		<h1>1. <code>await widget.spin()</code></h1>
-		<p class="subtitle">
-			The recommended way to collect results. <code>widget.spin()</code> returns a
-			<code>Promise&lt;SpinResult&gt;</code> that resolves after the animation completes.
-		</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Example 1 — await widget.spin()</title>
+        <link href="./src/styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <a class="back" href="index.html">← All Examples</a>
+        <h1>1. <code>await widget.spin()</code></h1>
+        <p class="subtitle">
+            The recommended way to collect results. <code>widget.spin()</code> returns a
+            <code>Promise&lt;SpinResult&gt;</code>
+            that resolves after the animation completes.
+        </p>
 
-		<div class="layout">
-			<div class="wheel-area">
-				<div id="wheel" class="wheel-mount"></div>
-				<button id="btn" class="btn" type="button" >Spin!</button>
-			</div>
+        <div class="layout">
+            <div class="wheel-area">
+                <div class="wheel-mount" id="wheel"></div>
+                <button class="btn" id="btn" type="button">Spin!</button>
+            </div>
 
-			<div class="info-area">
-				<h2>Result</h2>
-				<pre id="result" class="result-box">Click "Spin!" to see the result here.</pre>
+            <div class="info-area">
+                <h2>Result</h2>
+                <pre class="result-box" id="result">Click "Spin!" to see the result here.</pre>
 
-				<h2>Source Code</h2>
-				<pre class="code-box"><code>import { SpinWheelWidget } from '@spin-wheel/widget';
+                <h2>Source Code</h2>
+                <pre
+                    class="code-box"
+                ><code>import { SpinWheelWidget } from '@spin-wheel/widget';
 
 const widget = SpinWheelWidget.create('#wheel', {
   segments: [
@@ -43,9 +46,9 @@ console.log(result.segment.label);  // "🌮 Tacos"
 console.log(result.segment.id);     // "tacos"
 console.log(result.segment.data);   // custom payload
 console.log(result.finalAngle);     // rotation degrees</code></pre>
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<script type="module" src="./src/await-spin.ts"></script>
-	</body>
+        <script src="./src/await-spin.ts" type="module"></script>
+    </body>
 </html>
