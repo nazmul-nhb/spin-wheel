@@ -5,19 +5,14 @@
 	"sideEffects": false,
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.mts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"types": "./dist/index.d.cts",
-				"default": "./dist/index.cjs"
-			}
-		}
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		},
+		"./package.json": "./package.json"
 	},
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.mts",
+	"types": "./dist/index.d.cts",
 	"files": [
 		"dist"
 	],
@@ -25,15 +20,9 @@
 		"build": "tsdown",
 		"watch": "tsdown --watch"
 	},
-	"peerDependencies": {
-		"@spin-wheel/core": "workspace:*",
-		"@spin-wheel/renderer": "workspace:*"
-	},
-	"dependencies": {
-		"@spin-wheel/core": "workspace:*",
-		"@spin-wheel/renderer": "workspace:*"
-	},
 	"devDependencies": {
+		"@spin-wheel/core": "workspace:*",
+		"@spin-wheel/renderer": "workspace:*",
 		"tsdown": "0.22.14",
 		"typescript": "^6.0.3"
 	}

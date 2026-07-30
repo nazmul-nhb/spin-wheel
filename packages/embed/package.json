@@ -5,20 +5,15 @@
 	"sideEffects": false,
 	"exports": {
 		".": {
-			"import": {
-				"types": "./dist/index.d.mts",
-				"default": "./dist/index.mjs"
-			},
-			"require": {
-				"types": "./dist/index.d.cts",
-				"default": "./dist/index.cjs"
-			}
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
 		},
-		"./global": "./dist/spin-wheel.global.js"
+		"./global": "./dist/spin-wheel.global.js",
+		"./package.json": "./package.json"
 	},
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.mts",
+	"types": "./dist/index.d.cts",
 	"files": [
 		"dist"
 	],
@@ -28,12 +23,10 @@
 		"watch": "tsdown --watch",
 		"dev": "vite"
 	},
-	"dependencies": {
+	"devDependencies": {
 		"@spin-wheel/core": "workspace:*",
 		"@spin-wheel/renderer": "workspace:*",
-		"@spin-wheel/widget": "workspace:*"
-	},
-	"devDependencies": {
+		"@spin-wheel/widget": "workspace:*",
 		"esbuild": "^0.28.1",
 		"tsdown": "0.22.14",
 		"typescript": "^6.0.3",

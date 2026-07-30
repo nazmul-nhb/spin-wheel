@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * Build the IIFE global bundle using esbuild.
  *
@@ -12,6 +14,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build } from 'esbuild';
+import { Stylog } from 'toolbox-x/stylog';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(readFileSync(resolve(__dirname, 'package.json'), 'utf-8'));
@@ -23,7 +26,7 @@ await build({
     globalName: '__SpinWheel_internal__',
     outfile: resolve(__dirname, 'dist/spin-wheel.global.js'),
     minify: true,
-    sourcemap: true,
+    sourcemap: false,
     target: ['es2020'],
     banner: {
         js: `/* @spin-wheel/embed v${pkg.version} | MIT */`,
@@ -33,4 +36,4 @@ await build({
     },
 });
 
-console.info('✔ Global bundle built → dist/spin-wheel.global.js');
+console.info(Stylog.ansi16('cyan').toANSI('✔ Global bundle built → dist/spin-wheel.global.js'));

@@ -17,6 +17,9 @@ importers:
       nhb-scripts:
         specifier: ^1.9.2
         version: 1.9.2
+      toolbox-x:
+        specifier: ^2.6.17
+        version: 2.6.17
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
@@ -66,7 +69,7 @@ importers:
         version: 4.1.10(@types/node@26.1.2)(vite@8.1.5(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.6.1))
 
   packages/embed:
-    dependencies:
+    devDependencies:
       '@spin-wheel/core':
         specifier: workspace:*
         version: link:../core
@@ -76,7 +79,6 @@ importers:
       '@spin-wheel/widget':
         specifier: workspace:*
         version: link:../widget
-    devDependencies:
       esbuild:
         specifier: ^0.28.1
         version: 0.28.1
@@ -91,11 +93,10 @@ importers:
         version: 8.1.5(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.6.1)
 
   packages/renderer:
-    dependencies:
+    devDependencies:
       '@spin-wheel/core':
         specifier: workspace:*
         version: link:../core
-    devDependencies:
       tsdown:
         specifier: 0.22.14
         version: 0.22.14(typescript@6.0.3)(unrun@0.2.39)
@@ -104,14 +105,13 @@ importers:
         version: 6.0.3
 
   packages/widget:
-    dependencies:
+    devDependencies:
       '@spin-wheel/core':
         specifier: workspace:*
         version: link:../core
       '@spin-wheel/renderer':
         specifier: workspace:*
         version: link:../renderer
-    devDependencies:
       tsdown:
         specifier: 0.22.14
         version: 0.22.14(typescript@6.0.3)(unrun@0.2.39)
@@ -1525,6 +1525,9 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  toolbox-x@2.6.17:
+    resolution: {integrity: sha512-ETSYZq1JOI/YLyyFyaWR6OSymjMOn4T+M8feIrTIA1WVIagn8tj3JIQLnmby+Sr3YJupesEPFnuZqzg+yu2G7g==}
+
   tree-kill@1.2.2:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
     hasBin: true
@@ -2790,6 +2793,8 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  toolbox-x@2.6.17: {}
 
   tree-kill@1.2.2: {}
 

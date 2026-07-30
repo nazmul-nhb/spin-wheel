@@ -2,9 +2,11 @@ import { defineConfig } from 'tsdown';
 
 export default defineConfig({
     entry: ['src/index.ts'],
-    format: ['esm', 'cjs'],
+    globalName: 'SpinWheel',
+    format: ['esm', 'cjs', 'iife'],
     dts: true,
-    sourcemap: true,
     clean: true,
-    deps: { neverBundle: ['@spin-wheel/core', '@spin-wheel/renderer', '@spin-wheel/widget'] },
+    deps: {
+        onlyBundle: false,
+    },
 });

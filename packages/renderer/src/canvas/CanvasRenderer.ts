@@ -1,10 +1,11 @@
+import type { Nullable } from 'toolbox-x/types';
 import { BaseRenderer } from '../base.js';
 import { drawWheel } from './draw.js';
 
 /** Canvas-based wheel renderer. */
 export class CanvasRenderer extends BaseRenderer {
-    private canvas: HTMLCanvasElement | null = null;
-    private ctx: CanvasRenderingContext2D | null = null;
+    private canvas: Nullable<HTMLCanvasElement> = null;
+    private ctx: Nullable<CanvasRenderingContext2D> = null;
 
     /** Cached device-pixel-ratio, updated on mount / resize. */
     private dpr = 1;

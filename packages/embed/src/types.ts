@@ -1,5 +1,6 @@
 import type { SpinResult, WheelSegment, WheelState } from '@spin-wheel/core';
 import type { SpinWheelWidget } from '@spin-wheel/widget';
+import type { NumericString } from 'toolbox-x/types';
 
 // ---------------------------------------------------------------------------
 // Global augmentations
@@ -18,6 +19,23 @@ declare global {
 
     interface HTMLElementEventMap extends SpinWheelEventMap {}
     interface DocumentEventMap extends SpinWheelEventMap {}
+
+    interface WheelDataSet {
+        /** Wheel segments. */
+        segments?: string;
+        /** Which renderer backend to use (defaults to "canvas"). */
+        renderer?: 'canvas' | 'svg';
+        /** Duration of the spin animation in milliseconds (defaults to 4000). */
+        durationMs?: NumericString;
+        /** Minimum full spins (passed to engine). */
+        minSpins?: NumericString;
+        /** Maximum full spins (passed to engine). */
+        maxSpins?: NumericString;
+        /** Seed for deterministic results. */
+        seed?: string;
+    }
+
+    export interface DOMStringMap extends WheelDataSet {}
 }
 
 // ---------------------------------------------------------------------------

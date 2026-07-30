@@ -1,41 +1,44 @@
+import { isValidArray } from 'toolbox-x/guards';
+import type { Nullable } from 'toolbox-x/types';
 import { calculateFinalAngle } from './angle.js';
 import { createSeededRng } from './rng.js';
 import type { SpinResult, WheelEngineConfig, WheelSegment, WheelState } from './types.js';
 import { pickWeightedIndex } from './weighted.js';
 
 /** Deep-freeze a segment to prevent external mutation. */
-function freezeSegment(seg: WheelSegment): Readonly<WheelSegment> {
+function freezeSegment<D = unknown>(seg: WheelSegment<D>): Readonly<WheelSegment<D>> {
     return Object.freeze({ ...seg });
 }
 
 /** Pure-logic wheel engine. No DOM dependency. */
-export class WheelEngine {
-    private segments: readonly Readonly<WheelSegment>[];
+export class WheelEngine<Data = unknown> {
+    private segments: readonly Readonly<WheelSegment<Data>>[];
     private state: WheelState = 'idle';
     private readonly rng: () => number;
     private readonly minSpins: number;
     private readonly maxSpins: number;
-    private lastResult: SpinResult | null = null;
+    private lastResult: Nullable<SpinResult<Data>> = null;
 
-    constructor(config: WheelEngineConfig) {
-        if (!config.segments || config.segments.length === 0) {
+    constructor(config: WheelEngineConfig<Data>) {
+        const { segments, maxSpins = 8, minSpins = 4, seed } = config;
+
+        if (!isValidArray(segments)) {
             throw new Error('WheelEngine: at least one segment is required.');
         }
 
-        const min = config.minSpins ?? 4;
-        const max = config.maxSpins ?? 8;
-
-        if (min < 1) {
-            throw new Error(`WheelEngine: minSpins must be ≥ 1, got ${min}.`);
+        if (minSpins < 1) {
+            throw new RangeError(`WheelEngine: minSpins must be ≥ 1, got ${minSpins}.`);
         }
-        if (max < min) {
-            throw new Error(`WheelEngine: maxSpins (${max}) must be ≥ minSpins (${min}).`);
+        if (maxSpins < minSpins) {
+            throw new RangeError(
+                `WheelEngine: maxSpins (${maxSpins}) must be ≥ minSpins (${minSpins}).`
+            );
         }
 
-        this.segments = config.segments.map(freezeSegment);
-        this.minSpins = min;
-        this.maxSpins = max;
-        this.rng = config.seed ? createSeededRng(config.seed) : () => Math.random();
+        this.segments = segments.map(freezeSegment);
+        this.minSpins = minSpins;
+        this.maxSpins = maxSpins;
+        this.rng = seed ? createSeededRng(seed) : () => Math.random();
     }
 
     /** Returns the current wheel state. */
@@ -44,17 +47,17 @@ export class WheelEngine {
     }
 
     /** Returns the last spin result, if any. */
-    getLastResult(): SpinResult | null {
+    getLastResult(): Nullable<SpinResult<Data>> {
         return this.lastResult;
     }
 
     /** Returns a frozen copy of the current segments. */
-    getSegments(): readonly Readonly<WheelSegment>[] {
+    getSegments(): readonly Readonly<WheelSegment<Data>>[] {
         return this.segments;
     }
 
     /** Replace the current segments. Resets state to idle. */
-    setSegments(segments: readonly WheelSegment[]): void {
+    setSegments(segments: readonly WheelSegment<Data>[]): void {
         if (!segments || segments.length === 0) {
             throw new Error('WheelEngine: at least one segment is required.');
         }
@@ -66,7 +69,7 @@ export class WheelEngine {
      * Determines the result and computes the final angle.
      * Result is known BEFORE any animation.
      */
-    spin(): SpinResult {
+    spin(): SpinResult<Data> {
         if (this.state === 'spinning') {
             throw new Error('WheelEngine: a spin is already in progress.');
         }
@@ -88,7 +91,7 @@ export class WheelEngine {
         if (!segment) {
             throw new Error(`WheelEngine: internal error — invalid index ${index}.`);
         }
-        const result: SpinResult = Object.freeze({ index, segment, finalAngle });
+        const result: SpinResult<Data> = Object.freeze({ index, segment, finalAngle });
 
         this.lastResult = result;
         this.state = 'finished';

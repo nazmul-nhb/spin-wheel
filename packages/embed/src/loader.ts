@@ -1,9 +1,10 @@
+import type { Nullable } from 'toolbox-x/types';
 import type { LoadOptions, SpinWheelGlobal } from './types.js';
 
 /**
  * Internal cache to ensure the global script is only loaded once.
  */
-let loadPromise: Promise<SpinWheelGlobal> | null = null;
+let loadPromise: Nullable<Promise<SpinWheelGlobal>> = null;
 
 /**
  * Asynchronously inject the SpinWheel global script into the page.

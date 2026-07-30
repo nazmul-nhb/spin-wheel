@@ -1,5 +1,5 @@
 /** A single segment on the wheel. */
-export interface WheelSegment {
+export interface WheelSegment<Data = unknown> {
     /** Unique identifier for the segment. */
     readonly id: string;
     /** Display label for the segment. */
@@ -7,15 +7,15 @@ export interface WheelSegment {
     /** Relative weight for selection probability (defaults to 1). */
     readonly weight?: number;
     /** Arbitrary payload attached to the segment. */
-    readonly data?: unknown;
+    readonly data?: Data;
 }
 
 /** Result returned after a spin completes. */
-export interface SpinResult {
+export interface SpinResult<Data = unknown> {
     /** Index of the winning segment. */
     readonly index: number;
     /** The winning segment. */
-    readonly segment: Readonly<WheelSegment>;
+    readonly segment: Readonly<WheelSegment<Data>>;
     /** Final rotation angle in degrees. */
     readonly finalAngle: number;
 }
@@ -24,9 +24,9 @@ export interface SpinResult {
 export type WheelState = 'idle' | 'spinning' | 'finished';
 
 /** Configuration for the WheelEngine. */
-export interface WheelEngineConfig {
+export interface WheelEngineConfig<Data = unknown> {
     /** Wheel segments. */
-    readonly segments: readonly WheelSegment[];
+    readonly segments: readonly WheelSegment<Data>[];
     /** Minimum full rotations during a spin. */
     readonly minSpins?: number;
     /** Maximum full rotations during a spin. */

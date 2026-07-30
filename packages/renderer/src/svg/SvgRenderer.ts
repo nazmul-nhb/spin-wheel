@@ -1,3 +1,4 @@
+import type { Nullable } from 'toolbox-x/types';
 import { BaseRenderer, colorForIndex } from '../base.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -54,9 +55,9 @@ function wedgePath(
  * transform on the <g> group — no DOM teardown/rebuild each frame.
  */
 export class SvgRenderer extends BaseRenderer {
-    private svg: SVGSVGElement | null = null;
-    private wheelGroup: SVGGElement | null = null;
-    private pointerEl: SVGPolygonElement | null = null;
+    private svg: Nullable<SVGSVGElement> = null;
+    private wheelGroup: Nullable<SVGGElement> = null;
+    private pointerEl: Nullable<SVGPolygonElement> = null;
 
     protected onMount(el: HTMLElement): void {
         this.svg = svgEl('svg', {

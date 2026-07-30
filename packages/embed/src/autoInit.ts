@@ -16,7 +16,7 @@ function emit(el: HTMLElement, name: string, detail: unknown): void {
  */
 function mountFromElement(el: HTMLElement): SpinWheelWidget {
     const ds = el.dataset;
-    const renderer = (ds.renderer ?? 'canvas') as 'canvas' | 'svg';
+    const renderer = ds.renderer ?? 'canvas';
     const durationMs = Number(ds.duration) || 4000;
     const minSpins = Number(ds.minSpins) || undefined;
     const maxSpins = Number(ds.maxSpins) || undefined;

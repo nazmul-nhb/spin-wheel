@@ -1,7 +1,8 @@
 import type { WheelSegment } from '@spin-wheel/core';
+import type { Nullable } from 'toolbox-x/types';
 import type { EasingFn, WheelRenderer } from './types.js';
 
-/** Shared colour palette for segments. */
+/** Shared color palette for segments. */
 export const SEGMENT_COLORS: readonly string[] = [
     '#FF6B6B',
     '#4ECDC4',
@@ -15,7 +16,7 @@ export const SEGMENT_COLORS: readonly string[] = [
     '#85C1E9',
 ];
 
-/** Pick a colour for a segment by index. */
+/** Pick a color for a segment by index. */
 export function colorForIndex(index: number): string {
     const len = SEGMENT_COLORS.length;
     return SEGMENT_COLORS[((index % len) + len) % len] ?? '#cccccc';
@@ -29,7 +30,7 @@ export function colorForIndex(index: number): string {
  * guards against drawing after the renderer is destroyed.
  */
 export abstract class BaseRenderer implements WheelRenderer {
-    protected container: HTMLElement | null = null;
+    protected container: Nullable<HTMLElement> = null;
     protected segments: readonly WheelSegment[] = [];
     protected currentAngle = 0;
     protected width = 300;
@@ -39,10 +40,10 @@ export abstract class BaseRenderer implements WheelRenderer {
     protected destroyed = false;
 
     /** Current RAF handle, used for cancellation. */
-    private rafId: number | null = null;
+    private rafId: Nullable<number> = null;
 
     /** Rejection callback for the active rotateTo promise. */
-    private pendingReject: ((reason: Error) => void) | null = null;
+    private pendingReject: Nullable<(reason: Error) => void> = null;
 
     mount(el: HTMLElement): void {
         if (this.destroyed) {

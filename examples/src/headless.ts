@@ -23,7 +23,7 @@ const btnReset = $('#btn-reset') as HTMLButtonElement;
 
 let engine: WheelEngine | null = null;
 
-function createEngine(): WheelEngine {
+function createEngine() {
     const seed = seedInput.value.trim() || undefined;
     return new WheelEngine({
         segments,
